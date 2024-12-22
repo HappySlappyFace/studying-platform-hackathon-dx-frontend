@@ -13,13 +13,13 @@ const TeacherDashboard = () => {
         <Menu theme="dark" mode="inline">
           <Menu.Item
             key="1"
-            onClick={() => navigate("/teacher/manage-courses")}
+            onClick={() => navigate("/teacher/dashboard/manage-courses")}
           >
             Manage Courses
           </Menu.Item>
           <Menu.Item
             key="2"
-            onClick={() => navigate("/teacher/manage-resources")}
+            onClick={() => navigate("/teacher/dashboard/manage-resources")}
           >
             Manage Resources
           </Menu.Item>

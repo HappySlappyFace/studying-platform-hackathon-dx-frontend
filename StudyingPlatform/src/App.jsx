@@ -6,6 +6,8 @@ import LoginPage from "./pages/LoginPage";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import StudentDashboard from "./pages/StudentDashboard";
 import CourseDetails from "./pages/CourseDetails";
+import ManageCourses from "./pages/ManageCourses";
+import ManageResources from "./pages/ManageResources";
 import "antd/dist/reset.css"; // or import 'antd/dist/antd.css'; depending on version
 import "./styles/global.css";
 
@@ -20,8 +22,8 @@ function App() {
           {/* Teacher */}
           <Route path="/teacher/dashboard" element={<TeacherDashboard />}>
             {/* Nested Teacher Routes if needed */}
-            {/* <Route path="manage-courses" element={<ManageCourses />} /> */}
-            {/* <Route path="manage-resources" element={<ManageResources />} /> */}
+            <Route path="manage-courses" element={<ManageCourses />} />
+            <Route path="manage-resources" element={<ManageResources />} />
           </Route>
 
           {/* Student */}

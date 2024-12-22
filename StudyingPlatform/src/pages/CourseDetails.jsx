@@ -38,7 +38,7 @@ const CourseDetails = () => {
 
   const handleMarkCompleted = async (resourceId) => {
     try {
-      await markResourceCompleted({ resourceId, courseId });
+      await markResourceCompleted(courseId, resourceId); // Pass values directly
       message.success("Resource marked as completed!");
     } catch (error) {
       message.error("Failed to mark resource as completed.");

@@ -18,25 +18,47 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Authentication
+/**
+ * Authentication Endpoints
+ */
 export const login = (data) => api.post("/api/v1/auth/authenticate", data);
 export const registerUser = (data) => api.post("/api/v1/auth/register", data);
 
-// Courses
+/**
+ * General Student Actions
+ */
 export const getCourses = () => api.get("/api/student/courses");
 export const getCourseDetails = (courseId) =>
   api.get(`/api/student/courses/${courseId}`);
+
+/**
+ * Progress Tracking Actions
+ */
+export const markResourceCompleted = (courseId, resourceId) =>
+  api.post("/api/student/progress/mark-completed", null, {
+    params: {
+      courseId, // Adds ?courseId=1
+      resourceId, // Adds &resourceId=2
+    },
+  });
+
+export const getCourseProgress = (courseId) =>
+  api.get(`/api/student/progress/course/${courseId}`);
+
+export const getAllProgress = () => api.get("/api/student/progress/all");
+
+/**
+ * Teacher Actions (For Example)
+ */
+export const getTeacherCourses = () => api.get("/api/teacher/my-courses");
+
 export const createCourse = (data) => api.post("/api/courses/create", data);
 
-// Resources
+/**
+ * Resource Actions
+ */
 export const getResources = (courseId) =>
   api.get(`/api/resources/course/${courseId}`);
 export const uploadResource = (data) => api.post("/api/resources/upload", data);
-
-// Progress
-export const markResourceCompleted = (data) =>
-  api.post("/api/student/progress/mark-completed", data);
-export const getCourseProgress = (courseId) =>
-  api.get(`/api/student/progress/course/${courseId}`);
 
 export default api;
