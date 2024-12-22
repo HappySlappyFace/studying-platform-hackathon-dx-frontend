@@ -61,4 +61,12 @@ export const getResources = (courseId) =>
   api.get(`/api/resources/course/${courseId}`);
 export const uploadResource = (data) => api.post("/api/resources/upload", data);
 
+export const getVideo = (fileName) =>
+  api.get(`/api/resources/video/${fileName}`, {
+    responseType: "blob", // Ensure response is treated as binary data
+  });
+
+export const getVideoUrl = (videoId) =>
+  api.get(`/api/resources/video/url/${videoId}`);
+
 export default api;

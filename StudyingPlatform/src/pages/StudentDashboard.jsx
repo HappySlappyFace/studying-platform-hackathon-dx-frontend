@@ -1,42 +1,55 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, message } from "antd";
-import { getCourses } from "../api/api";
-import CourseCard from "../components/CourseCard.jsx";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Card, Progress, Row, Col, Typography, Divider } from "antd";
+
+const { Title, Text } = Typography;
 
 const StudentDashboard = () => {
-  const [courses, setCourses] = useState([]);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const { data } = await getCourses();
-        setCourses(data);
-      } catch (error) {
-        message.error("Failed to fetch courses.");
-      }
-    };
-
-    fetchCourses();
-  }, []);
-
-  const handleCourseClick = (courseId) => {
-    navigate(`/student/courses/${courseId}`);
-  };
-
   return (
     <div>
-      <h1>Student Dashboard</h1>
+      <Title level={3}>Welcome back, Student</Title>
+      <Text>Your current courses and progress.</Text>
+
+      <Row gutter={[16, 16]} style={{ marginTop: "24px" }}>
+        <Col span={8}>
+          <Card>
+            <Text>Complete Course</Text>
+            <Title level={4}>28</Title>
+          </Card>
+        </Col>
+        <Col span={8}>
+          <Card>
+            <Text>In Progress Course</Text>
+            <Title level={4}>14</Title>
+          </Card>
+        </Col>
+        <Col span={8}>
+          <Card>
+            <Text>Upcoming</Text>
+            <Title level={4}>91</Title>
+          </Card>
+        </Col>
+      </Row>
+
+      <Divider orientation="left" style={{ marginTop: "32px" }}>
+        My Homework
+      </Divider>
       <Row gutter={[16, 16]}>
-        {courses.map((course) => (
-          <Col key={course.id} xs={24} sm={12} md={8} lg={6}>
-            <CourseCard
-              course={course}
-              onClick={() => handleCourseClick(course.id)}
-            />
-          </Col>
-        ))}
+        <Col span={6}>
+          <Text>Web Design</Text>
+          <Progress percent={55} />
+        </Col>
+        <Col span={6}>
+          <Text>Ads Facebook</Text>
+          <Progress percent={75} />
+        </Col>
+        <Col span={6}>
+          <Text>Graphic Design</Text>
+          <Progress percent={70} />
+        </Col>
+        <Col span={6}>
+          <Text>Content Creator</Text>
+          <Progress percent={90} />
+        </Col>
       </Row>
     </div>
   );

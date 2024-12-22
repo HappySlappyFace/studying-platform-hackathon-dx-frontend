@@ -1,0 +1,15 @@
+/* Sidebar Logo */
+.logo {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Summary Cards */
+.ant-card {
+  text-align: center;
+}
+
+/* Homework Section */
+.ant-progress {
+  margin-top: 8px;
+}
